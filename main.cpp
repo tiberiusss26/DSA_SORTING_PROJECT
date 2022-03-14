@@ -233,7 +233,8 @@ int main(void) {
      cout<<"Test"<<" "<<++i<<", N = "<<n<<": "<<endl;
 
     for (long long i = 1; i <= n; i++) {
-        v1.push_back(rand() % 1000000);
+        v1.push_back(rand() % 10000000
+        );
         v2.push_back(v1[v1.size() - 1]);
         v3.push_back(v1[v1.size() - 1]);
         v4.push_back(v1[v1.size() - 1]);
@@ -280,7 +281,7 @@ int main(void) {
 
 //7) Counting Sort
     cout << "CountingSort: ";
-    v4 = CountingSort(v4, n);
+    v4 = CountingSort(v4, 10000000);
     if(sortat_bine(v4,v6)) cout<<"Sortat cu succes"<<endl; else cout<<"Nu a fost sortat"<<endl;
 
 //8) Quick Sort
@@ -294,4 +295,150 @@ int main(void) {
     cout << "----------------------------------------------------------------" << endl;
     v1.clear();v2.clear();v3.clear();v4.clear();v5.clear();v6.clear();v7.clear();v8.clear();
 }
+    for (long long i = 1; i <= 10000000; i++) {
+        v1.push_back(rand() % 10000000);
+        v2.push_back(v1[v1.size() - 1]);
+        v3.push_back(v1[v1.size() - 1]);
+        v4.push_back(v1[v1.size() - 1]);
+        v5.push_back(v1[v1.size() - 1]);
+        v6.push_back(v1[v1.size() - 1]);
+        v7.push_back(v1[v1.size() - 1]);
+        v8.push_back(v1[v1.size() - 1]);
+    }
+    sort(v1.rbegin(),v1.rend());
+    sort(v2.rbegin(),v2.rend());
+    sort(v3.rbegin(),v3.rend());
+    sort(v4.rbegin(),v4.rend());
+    sort(v5.rbegin(),v5.rend());
+    sort(v6.rbegin(),v6.rend());
+    sort(v7.rbegin(),v7.rend());
+    sort(v8.rbegin(),v8.rend());
+
+    cout<<"Test 7, N=10000000, reverse sorted: \n";
+
+    //1) Stl Sort
+    cout<<"Stl Sort: ";
+    clock_t tStart = clock();
+    sort(v6.begin(),v6.end());
+    cout.precision(5);
+    cout << fixed << float(clock() - tStart) / CLOCKS_PER_SEC << endl;
+
+//2) Shell Sort (Gap (3^k-1)/2 )
+    cout << "Shell sort, gap (3^k-1)/2: ";
+    v1 = shell_sort(v1, 10000000);
+    if(sortat_bine(v1,v6)) cout<<"Sortat cu succes"<<endl; else cout<<"Nu a fost sortat"<<endl;
+//3) Shell Sort (Gap (2^k-1) )
+    cout << "Shell sort, gap (2^k-1): ";
+    v7 = shell_sort(v7, 10000000);
+    if(sortat_bine(v7,v6)) cout<<"Sortat cu succes"<<endl; else cout<<"Nu a fost sortat"<<endl;
+
+
+//4) Merge Sort
+    cout << "MergeSort: ";
+    tStart = clock();
+    merge_sort(v2);
+    cout.precision(5);
+    cout << fixed << float(clock() - tStart) / CLOCKS_PER_SEC <<"sec  //  ";
+    if(sortat_bine(v2,v6)) cout<<"Sortat cu succes"<<endl; else cout<<"Nu a fost sortat"<<endl;
+
+//5) Radix Sort baza 10
+    cout << "RadixSort baza 10: ";
+    v3 = radixsort(v3, 10000000);
+    if(sortat_bine(v3,v6)) cout<<"Sortat cu succes"<<endl; else cout<<"Nu a fost sortat"<<endl;
+
+//6) Radix Sort baza 2^16
+    cout << "RadixSort baza 2^16: ";
+    v8 = radixsort(v8, 10000000);
+    if(sortat_bine(v8,v6)) cout<<"Sortat cu succes"<<endl; else cout<<"Nu a fost sortat"<<endl;
+
+//7) Counting Sort
+    cout << "CountingSort: ";
+    v4 = CountingSort(v4, 10000000);
+    if(sortat_bine(v4,v6)) cout<<"Sortat cu succes"<<endl; else cout<<"Nu a fost sortat"<<endl;
+
+//8) Quick Sort
+    cout << "QuickSort: ";
+    tStart = clock();
+    quickSort(v5, 0, 10000000 - 1);
+    cout.precision(5);
+    cout << fixed << float(clock() - tStart) / CLOCKS_PER_SEC <<"sec  //  ";
+    if(sortat_bine(v5,v6)) cout<<"Sortat cu succes"<<endl; else cout<<"Nu a fost sortat"<<endl;
+
+    cout << "----------------------------------------------------------------" << endl;
+    v1.clear();v2.clear();v3.clear();v4.clear();v5.clear();v6.clear();v7.clear();v8.clear();
+
+
+    for (long long i = 1; i <= 10000000; i++) {
+        v1.push_back(rand() % 10000000);
+        v2.push_back(v1[v1.size() - 1]);
+        v3.push_back(v1[v1.size() - 1]);
+        v4.push_back(v1[v1.size() - 1]);
+        v5.push_back(v1[v1.size() - 1]);
+        v6.push_back(v1[v1.size() - 1]);
+        v7.push_back(v1[v1.size() - 1]);
+        v8.push_back(v1[v1.size() - 1]);
+    }
+    sort(v1.begin(),v1.end());
+    sort(v2.begin(),v2.end());
+    sort(v3.begin(),v3.end());
+    sort(v4.begin(),v4.end());
+    sort(v5.begin(),v5.end());
+    sort(v6.begin(),v6.end());
+    sort(v7.begin(),v7.end());
+    sort(v8.begin(),v8.end());
+
+    cout<<"Test 8, N=10000000, sorted: \n";
+
+    //1) Stl Sort
+    cout<<"Stl Sort: ";
+    tStart = clock();
+    sort(v6.begin(),v6.end());
+    cout.precision(5);
+    cout << fixed << float(clock() - tStart) / CLOCKS_PER_SEC << endl;
+
+//2) Shell Sort (Gap (3^k-1)/2 )
+    cout << "Shell sort, gap (3^k-1)/2: ";
+    v1 = shell_sort(v1, 10000000);
+    if(sortat_bine(v1,v6)) cout<<"Sortat cu succes"<<endl; else cout<<"Nu a fost sortat"<<endl;
+//3) Shell Sort (Gap (2^k-1) )
+    cout << "Shell sort, gap (2^k-1): ";
+    v7 = shell_sort(v7, 10000000);
+    if(sortat_bine(v7,v6)) cout<<"Sortat cu succes"<<endl; else cout<<"Nu a fost sortat"<<endl;
+
+
+//4) Merge Sort
+    cout << "MergeSort: ";
+    tStart = clock();
+    merge_sort(v2);
+    cout.precision(5);
+    cout << fixed << float(clock() - tStart) / CLOCKS_PER_SEC <<"sec  //  ";
+    if(sortat_bine(v2,v6)) cout<<"Sortat cu succes"<<endl; else cout<<"Nu a fost sortat"<<endl;
+
+//5) Radix Sort baza 10
+    cout << "RadixSort baza 10: ";
+    v3 = radixsort(v3, 10000000);
+    if(sortat_bine(v3,v6)) cout<<"Sortat cu succes"<<endl; else cout<<"Nu a fost sortat"<<endl;
+
+//6) Radix Sort baza 2^16
+    cout << "RadixSort baza 2^16: ";
+    v8 = radixsort(v8, 10000000);
+    if(sortat_bine(v8,v6)) cout<<"Sortat cu succes"<<endl; else cout<<"Nu a fost sortat"<<endl;
+
+//7) Counting Sort
+    cout << "CountingSort: ";
+    v4 = CountingSort(v4, 10000000);
+    if(sortat_bine(v4,v6)) cout<<"Sortat cu succes"<<endl; else cout<<"Nu a fost sortat"<<endl;
+
+//8) Quick Sort
+    cout << "QuickSort: ";
+    tStart = clock();
+    quickSort(v5, 0, 10000000 - 1);
+    cout.precision(5);
+    cout << fixed << float(clock() - tStart) / CLOCKS_PER_SEC <<"sec  //  ";
+    if(sortat_bine(v5,v6)) cout<<"Sortat cu succes"<<endl; else cout<<"Nu a fost sortat"<<endl;
+
+    cout << "----------------------------------------------------------------" << endl;
+
+
+
 }
